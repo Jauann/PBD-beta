@@ -1,0 +1,41 @@
+{% load static %}
+
+{% block title %}Minhas Empresas | RentHub{% endblock %}
+
+{# Este bloco insere o CSS específico APENAS no 'espaço reservado' do base.html #}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/empresas/empresa_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <h2>Minhas Empresas</h2>
+    <a href="{% url 'empresas:empresa-create' %}" class="btn-primary">+ Adicionar Nova Empresa</a>
+    
+    {% if empresas %}
+    <table class="items-table">
+        <thead>
+            <tr>
+                <th>Nome da Empresa</th>
+                <th>CNPJ</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empresa in empresas %}
+            <tr>
+                <td>{{ empresa.nome }}</td>
+                <td>{{ empresa.cnpj }}</td>
+                <td class="actions">
+                    <a href="{% url 'empresas:empresa-update' empresa.pk %}">Editar</a>
+                    <a href="{% url 'empresas:empresa-delete' empresa.pk %}" class="delete-link">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Você ainda não cadastrou nenhuma empresa.</p>
+    {% endif %}
+</div>
+{% endblock %}

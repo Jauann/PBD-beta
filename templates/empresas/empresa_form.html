@@ -1,0 +1,19 @@
+{% load static %}
+
+{% block title %}{% if form.instance.pk %}Editar Empresa{% else %}Adicionar Empresa{% endif %} | RentHub{% endblock %}
+
+{% block extra_head %}
+{# Alterado o caminho para o novo arquivo CSS #}
+<link rel="stylesheet" href="{% static 'css/empresas/empresa_forms.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>{% if form.instance.pk %}Editar Empresa{% else %}Adicionar Nova Empresa{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-primary">Salvar</button>
+    </form>
+</div>
+{% endblock %}

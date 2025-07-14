@@ -34,24 +34,27 @@
         <table class="items-table">
             <thead>
                 <tr>
+                    <th>Imagem</th>
                     <th>Item</th>
                     <th>Status</th>
                     <th>Preço/Dia</th>
+                    <th>Quantidade</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in itens %}
                 <tr>
+                    <td>
+                        {% if item.imagem %} 
+                        <img src="{{ item.imagem.url }}" alt="{{ item.nome }}" style="width: 100px; height: auto; border-radius: 10px; margin-right: 10px;">
+                       {% endif %}
                     <td>{{ item.nome }}</td>
                     <td>
-                        {% if item.disponivel %}
-                            <span class="status-indicator status-available">Disponível</span>
-                        {% else %}
-                            <span class="status-indicator status-rented">Alugado</span>
-                        {% endif %}
+                        <span class="status-indicator status-{{ item.status }}">{{ item.get_status_display }}</span>
                     </td>
                     <td>R$ {{ item.preco_diario }}</td>
+                    <td>{{ item.quantidade }}</td>
                     <td>
                         <a href="{% url 'itens:item-update' item.pk %}" class="action-button edit-button">Editar</a>
                         <a href="{% url 'itens:item-delete' item.pk %}" class="action-button delete-button">Excluir</a>
@@ -59,7 +62,7 @@
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="4">Você ainda não tem itens cadastrados.</td>
+                    <td colspan="5">Você ainda não tem itens cadastrados.</td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -21,6 +21,7 @@
                 <th>Nome do Item</th>
                 <th>Preço/Dia</th>
                 <th>Status</th>
+                <th>Quantidade</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -29,13 +30,8 @@
             <tr>
                 <td>{{ item.nome }}</td>
                 <td>R$ {{ item.preco_diario|floatformat:2 }}</td>
-                <td>
-                    {% if item.disponivel %}
-                        <span>Disponível</span>
-                    {% else %}
-                        <span>Alugado</span>
-                    {% endif %}
-                </td>
+                <td>{{ item.get_status_display }}</td>
+                <td>{{ item.quantidade }}</td>
                 <td class="actions">
                     <a href="{% url 'itens:item-update' item.pk %}">Editar</a>
                     <a href="{% url 'itens:item-delete' item.pk %}" class="delete-link">Excluir</a>

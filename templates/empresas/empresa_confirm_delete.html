@@ -1,0 +1,15 @@
+{% load static %}
+
+{% block title %}Confirmar Exclusão | RentHub{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Confirmar Exclusão</h2>
+    <p>Você tem certeza que deseja excluir a empresa "{{ object.nome }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-danger">Sim, excluir</button>
+        <a href="{% url 'empresas:empresa-list' %}" class="btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

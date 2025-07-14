@@ -22,26 +22,28 @@
             {{ form.descricao }}
         </p>
         <p>
-            <label for="{{ form.preco_diario.id_for_label }}">Preço por Dia (R$)</label>
-            {{ form.preco_diario }}
+            <label for="{{ form.imagem.id_for_label }}">Imagem do Item</label>
+            {{ form.imagem }}
         </p>
         <p>
             <label for="{{ form.tipo.id_for_label }}">Tipo</label>
             {{ form.tipo }}
         </p>
         <p>
+            <label for="{{ form.status.id_for_label }}">Status</label>
+            {{ form.status }}
+        </p>
+        <p>
+            <label for="{{ form.quantidade.id_for_label }}">Quantidade</label>
+            {{ form.quantidade }}
+        </p>
+        <p>
+            <label for="{{ form.preco_diario.id_for_label }}">Preço por Dia (R$)</label>
+            {{ form.preco_diario }}
+        </p>
+        <p>
             <label for="{{ form.empresa.id_for_label }}">Empresa</label>
             {{ form.empresa }}
-        </p>
-        {% if form.imagem %}
-        <p>
-            <label for="{{ form.imagem.id_for_label }}">Imagem do Item</label>
-            {{ form.imagem }}
-        </p>
-        {% endif %}
-        <p>
-            {{ form.disponivel.label_tag }}
-            {{ form.disponivel }}
         </p>
         
         <div class="form-actions">

@@ -1,0 +1,74 @@
+.list-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.list-container h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.items-table th, .items-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.items-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.items-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.items-table .actions a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.items-table .actions a.delete-link {
+    color: #dc3545;
+}
+
+.items-table .actions a:hover {
+    text-decoration: underline;
+}
+
+.list-container p {
+    color: #6c757d;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 2rem;
+}
