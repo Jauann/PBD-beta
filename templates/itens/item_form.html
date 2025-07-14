@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% if form.instance.pk %}Editar Item{% else %}Adicionar Item{% endif %} | RentHub{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/itens/itens_forms.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>{% if form.instance.pk %}Editar Item{% else %}Adicionar Novo Item{% endif %}</h2>
+    <form method="post" class="item-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <p>
+            <label for="{{ form.nome.id_for_label }}">Nome do Item</label>
+            {{ form.nome }}
+        </p>
+        <p>
+            <label for="{{ form.descricao.id_for_label }}">Descrição</label>
+            {{ form.descricao }}
+        </p>
+        <p>
+            <label for="{{ form.preco_diario.id_for_label }}">Preço por Dia (R$)</label>
+            {{ form.preco_diario }}
+        </p>
+        <p>
+            <label for="{{ form.tipo.id_for_label }}">Tipo</label>
+            {{ form.tipo }}
+        </p>
+        <p>
+            <label for="{{ form.empresa.id_for_label }}">Empresa</label>
+            {{ form.empresa }}
+        </p>
+        {% if form.imagem %}
+        <p>
+            <label for="{{ form.imagem.id_for_label }}">Imagem do Item</label>
+            {{ form.imagem }}
+        </p>
+        {% endif %}
+        <p>
+            {{ form.disponivel.label_tag }}
+            {{ form.disponivel }}
+        </p>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Salvar</button>
+            <a href="{% url 'dashboard:dashboard-home' %}" class="btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

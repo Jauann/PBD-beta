@@ -1,93 +1,70 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Dashboard | RentHub{% endblock %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
 
-{% block title %}Dashboard | RentHub{% endblock %}
-
 {% block content %}
 <main>
-    <header>
-        <nav>
-            <div class="logo">RentHub</div>
-            <div class="nav-links">
-                <a href="/">Voltar ao Marketplace</a>
-                <a href="#my-items">Meus Itens</a>
-                <a href="#add-item">Adicionar Item</a>
-                <a href="{% url 'usuarios:login' %}">Sair</a>
-            </div>
-        </nav>
-    </header>
-    <nav>
-        <div class="dashboard-container">
-            <div class="dashboard-header">
-                <h1>Olá, {{ user.username }}</h1>
-                <button class="cta-button">+ Adicionar Novo Item</button>
-            </div>
-            <div class="nav-links">
-                {% if user.is_authenticated %}
-                {% else %}
-                <a href="{% url 'usuarios:login' %}">Entrar</a>
-                {% endif %}
-            </div>
+    {% include 'includes/header.html' %} 
 
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">15</div>
-                    <div class="stat-label">Itens Cadastrados</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">8</div>
-                    <div class="stat-label">Aluguéis Ativos</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">R$ 2.450</div>
-                    <div class="stat-label">Faturamento Total</div>
-                </div>
-            </div>
-
-            <h2>Meus Itens para Aluguel</h2>
-            <table class="items-table">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Status</th>
-                        <th>Preço/Dia</th>
-                        <th>Visualizações</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Exemplo de itens -->
-                    <tr>
-                        <td>Câmera Profissional Canon EOS R6</td>
-                        <td><span class="status-indicator status-available">Disponível</span></td>
-                        <td>R$ 120</td>
-                        <td>156</td>
-                        <td>
-                            <button class="action-button edit-button">Editar</button>
-                            <button class="action-button delete-button">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Furadeira Impacto 550W</td>
-                        <td><span class="status-indicator status-rented">Alugada</span></td>
-                        <td>R$ 35</td>
-                        <td>89</td>
-                        <td>
-                            <button class="action-button edit-button">Editar</button>
-                            <button class="action-button delete-button">Excluir</button>
-                        </td>
-                    </tr>
-                    <!-- Adicione mais linhas conforme necessário -->
-                </tbody>
-            </table>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Olá, {{ user.username }}</h1>
+            <a href="{% url 'itens:item-create' %}" class="cta-button">+ Adicionar Novo Item</a>
         </div>
 
-        <!-- Footer pode ser mantido igual -->
-        {% include 'includes/footer.html' %}
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">{{ total_itens }}</div>
+                <div class="stat-label">Itens Cadastrados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">0</div> <div class="stat-label">Aluguéis Ativos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">R$ 0</div> <div class="stat-label">Faturamento Total</div>
+            </div>
+        </div>
+
+        <h2>Meus Itens para Aluguel</h2>
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Status</th>
+                    <th>Preço/Dia</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in itens %}
+                <tr>
+                    <td>{{ item.nome }}</td>
+                    <td>
+                        {% if item.disponivel %}
+                            <span class="status-indicator status-available">Disponível</span>
+                        {% else %}
+                            <span class="status-indicator status-rented">Alugado</span>
+                        {% endif %}
+                    </td>
+                    <td>R$ {{ item.preco_diario }}</td>
+                    <td>
+                        <a href="{% url 'itens:item-update' item.pk %}" class="action-button edit-button">Editar</a>
+                        <a href="{% url 'itens:item-delete' item.pk %}" class="action-button delete-button">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">Você ainda não tem itens cadastrados.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include 'includes/footer.html' %}
 </main>
 {% endblock %}

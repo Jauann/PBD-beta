@@ -1,8 +1,10 @@
-from django.urls import path
-from . import views
+# apps/dashboard/urls.py
 
-app_name = "dashboard"
+from django.urls import path
+from . import views # Importa as views do app
+
+app_name = 'dashboard' # Define um namespace para as URLs
 
 urlpatterns = [
-    path("dashboard/", views.dashboard, name="dashboard"),
+    path('', views.dashboard, name='dashboard-home'), # A rota '' corresponde a /dashboard/
 ]

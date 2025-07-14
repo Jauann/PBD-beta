@@ -1,0 +1,96 @@
+/* static/css/itens/itens_forms.css */
+
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.item-form p {
+    margin-bottom: 1rem;
+}
+
+.item-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.item-form input[type="text"],
+.item-form input[type="number"],
+.item-form textarea,
+.item-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+}
+
+.item-form input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto;
+}
+
+.item-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+/* Botão principal, seguindo o padrão do projeto */
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Botão de exclusão */
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Link de cancelar */
+.btn-secondary {
+    color: #6c757d;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    text-decoration: underline;
+}

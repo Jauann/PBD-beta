@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Confirmar Exclusão | RentHub{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/itens/itens_forms.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Confirmar Exclusão</h2>
+    <p>Você tem certeza que deseja excluir o item permanentemente?</p>
+    <p><strong>{{ object.nome }}</strong></p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="btn-primary btn-danger">Sim, excluir</button>
+            <a href="{% url 'dashboard:dashboard-home' %}" class="btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

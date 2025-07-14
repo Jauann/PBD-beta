@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+from django.conf import settings
+from django.conf.urls.static import static
 import os
 from pathlib import Path
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     "apps.home.apps.HomeConfig",
     "apps.dashboard.apps.DashboardConfig",
     "apps.usuarios.apps.UsuariosConfig",
+    "apps.itens.apps.ItensConfig",
 ]
 
 MIDDLEWARE = [

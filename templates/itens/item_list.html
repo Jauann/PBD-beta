@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Meus Itens | RentHub{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/itens/item_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <div class="list-header">
+        <h2>Meus Itens Cadastrados</h2>
+        <a href="{% url 'itens:item-create' %}" class="btn-primary">+ Adicionar Novo Item</a>
+    </div>
+
+    {% if itens %}
+    <table class="items-table">
+        <thead>
+            <tr>
+                <th>Nome do Item</th>
+                <th>Preço/Dia</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in itens %}
+            <tr>
+                <td>{{ item.nome }}</td>
+                <td>R$ {{ item.preco_diario|floatformat:2 }}</td>
+                <td>
+                    {% if item.disponivel %}
+                        <span>Disponível</span>
+                    {% else %}
+                        <span>Alugado</span>
+                    {% endif %}
+                </td>
+                <td class="actions">
+                    <a href="{% url 'itens:item-update' item.pk %}">Editar</a>
+                    <a href="{% url 'itens:item-delete' item.pk %}" class="delete-link">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="empty-list-message">Você ainda não cadastrou nenhum item. Que tal <a href="{% url 'itens:item-create' %}">adicionar o primeiro</a>?</p>
+    {% endif %}
+</div>
+{% endblock %}

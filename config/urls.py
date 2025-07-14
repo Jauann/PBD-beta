@@ -25,6 +25,7 @@ urlpatterns = [
     path("", include("apps.home.urls", namespace="home")),
     path("dashboard/", include("apps.dashboard.urls", namespace="dashboard")),
     path("usuarios/", include("apps.usuarios.urls", namespace="usuarios")),
+     path("meus-itens/", include("apps.itens.urls", namespace="itens")),
 ]
 
 if settings.DEBUG:
