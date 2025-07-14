@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.register-container {
+    background: #e9ecef;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 400px;
+}
+
+.register-container h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #091725;
+}
+
+.register-button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    background-color: #ff6b6b;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+}
+
+.register-button:hover {
+    background-color: #ff5252;
+}
+
+.nav-links {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.nav-links a {
+    color: #2e75e7;
+    text-decoration: none;
+}
+
+/* Estilos para os campos e erros do formulário do Django */
+.register-container form p {
+    margin-bottom: 1rem;
+}
+
+.register-container form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.register-container form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.errorlist {
+    /* AQUI ESTÁ A ESTILIZAÇÃO DA MENSAGEM DE ERRO */
+    color: #dc3545;
+    /* Vermelho para erros */
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.helptext {
+    font-size: 0.8rem;
+    color: #6c757d;
+    display: block;
+    margin-top: 5px;
+}

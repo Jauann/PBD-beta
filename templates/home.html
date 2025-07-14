@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    {% include 'includes/header.html' %}
+
+    <section class="hero">
+        <div class="hero-content">
+
+            <h1>Bem-vindo ao RentHub</h1>
+            <h2>Alugue o que precisar, quando precisar</h2>
+            <p>Encontre itens para alugar perto de você de forma rápida e segura.</p>
+            <h2>Você está conectado, {{ user.username }}!</h2>
+            <p>Encontre itens para alugar perto de você de forma rápida e segura.</p>
+            <a href="#featured" class="cta-button">Explorar Itens</a>
+            
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <h2>Categorias Populares</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <h3>Ferramentas</h3>
+                <p>+ de 500 itens</p>
+            </div>
+            <div class="category-card">
+                <h3>Eletrônicos</h3>
+                <p>+ de 300 itens</p>
+            </div>
+            <div class="category-card">
+                <h3>Esportes</h3>
+                <p>+ de 200 itens</p>
+            </div>
+            <div class="category-card">
+                <h3>Festas</h3>
+                <p>+ de 150 itens</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured" id="featured">
+        <h2>Itens em Destaque</h2>
+        <div class="rentals-grid">
+            <div class="rental-card">
+                <div class="rental-image"></div>
+                <div class="rental-info">
+                    <h3>Camera Profissional</h3>
+                    <div class="price">R$ 120/dia</div>
+                    <p>Serra Talhada - PE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'includes/footer.html' %}
+</main>
+{% endblock %}

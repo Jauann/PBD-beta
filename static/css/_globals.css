@@ -1,0 +1,265 @@
+/* ==========================================================================
+   Reset e Base CSS Moderno
+   ========================================================================== */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remover margens padrão */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+figure,
+hr,
+fieldset,
+legend {
+    margin: 0;
+    padding: 0;
+}
+
+/* Remover estilos padrão de listas */
+ol,
+ul {
+    list-style: none;
+}
+
+/* Elementos HTML5 display block */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+/* Corrigir quebra de palavras */
+html {
+    word-break: normal;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Base do body */
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* Links sem estilos padrão */
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Imagens responsivas */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Formulários reset */
+button,
+input,
+optgroup,
+select,
+textarea {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+}
+
+/* Evitar overflow de texto em inputs */
+input,
+textarea {
+    overflow: visible;
+}
+
+/* Reset para buttons */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+/* Remover setas em inputs number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove padrão de foco no Firefox */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+/* Textarea sem redimensionamento padrão */
+textarea {
+    resize: vertical;
+}
+
+/* Tabelas sem espaçamento entre células */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* ==========================================================================
+   Configurações de Tipografia Responsiva
+   ========================================================================== */
+
+html {
+    font-size: 62.5%;
+    /* 1rem = 10px (para facilitar cálculos) */
+}
+
+body {
+    font-size: 1.6rem;
+    /* 16px base */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+/* Tipografia responsiva para headings */
+h1 {
+    font-size: 3.2rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 2.4rem;
+}
+
+h4 {
+    font-size: 2.0rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+}
+
+h6 {
+    font-size: 1.6rem;
+}
+
+/* ==========================================================================
+   Media Queries para Responsividade
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 58%;
+    }
+}
+
+@media (max-width: 992px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 52%;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+    }
+
+    h3 {
+        font-size: 2.0rem;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 50%;
+    }
+
+    body {
+        line-height: 1.4;
+    }
+}
+
+/* ==========================================================================
+   Melhorias de Acessibilidade e Performance
+   ========================================================================== */
+
+/* Remover animações para quem preferir reduzir */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Foco visível para acessibilidade */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ==========================================================================
+   Helpers Opcionais
+   ========================================================================== */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

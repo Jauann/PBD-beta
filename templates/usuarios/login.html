@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/usuarios/login.css' %}">
+{% endblock %}
+
+{% block title %}Login de usuário{% endblock %}
+
+{% block content %}
+<main>
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {# --- INÍCIO DA CORREÇÃO --- #}
+
+            {# Bloco para exibir erros gerais (ex: "Usuário ou senha inválidos") #}
+            {% if form.non_field_errors %}
+            <div class="form-group">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+
+            {# Campo de Usuário renderizado pelo Django #}
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            {# Campo de Senha renderizado pelo Django #}
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                {{ form.password.errors }}
+            </div>
+
+            {# --- FIM DA CORREÇÃO --- #}
+
+            <button type="submit" class="login-button">Login</button>
+        </form>
+
+        <div class="nav-links">
+            <p>Não tem uma conta? <a href="{% url 'usuarios:signup' %}">Cadastre-se</a></p>
+            <p><a href="{% url 'home:home' %}">Voltar para a página inicial</a></p>
+        </div>
+    </div>
+</main>
+{% endblock %}

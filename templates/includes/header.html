@@ -1,0 +1,20 @@
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/includes/header.css' %}">
+{% endblock %}
+
+<header>
+    <nav>
+        <div class="logo">RentHub</div>
+        <div class="nav-links">
+            {% if user.is_authenticated %}
+            <span>Olá, {{ user.username }}</span>
+            <a href="{% url 'usuarios:logout' %}">Sair</a>
+            {% else %}
+            <a href="{% url 'usuarios:login' %}">Entrar</a>
+            <a href="{% url 'usuarios:signup' %}">Registrar</a>
+            {% endif %}
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/usuarios/signup.css' %}">
+{% endblock %}
+
+{% block title %}Registro de usuário{% endblock %}
+
+{% block content %}
+<main>
+    <div class="register-container">
+        <h2>Criar Conta</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {# ESTA LINHA É A MAIS IMPORTANTE #}
+            {# Ela renderiza o formulário do Django, que é capaz de mostrar os erros de validação #}
+            {{ form.as_p }}
+
+            <button type="submit" class="register-button">Registrar</button>
+        </form>
+
+        <div class="nav-links">
+            <p>Já tem uma conta? <a href="{% url 'usuarios:login' %}">Faça o login</a></p>
+        </div>
+    </div>
+</main>
+{% endblock %}
