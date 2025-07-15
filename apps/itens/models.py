@@ -11,7 +11,8 @@ class Tipo(models.Model):
 
 class Empresa(models.Model):
     nome = models.CharField(max_length=200)
-    dono = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='empresas')
+    cnpj = models.CharField(max_length=18, unique=True, null=True, blank=True)
+    dono = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='empresas_dos_itens')
 
     def __str__(self):
         return self.nome
